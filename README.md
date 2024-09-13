@@ -1,16 +1,17 @@
-Here’s the updated **Setup Instructions for the D-TECH Netflix Account Tester** in Termux, including the GitHub clone step and specific details for handling the ChromeDriver file:
+
+### Updated **Setup Instructions for the D-TECH Netflix Account Tester**
 
 ---
 
 ### 1. Update and Upgrade Termux Packages
-First, update and upgrade the Termux packages to ensure everything is up to date:
+Update and upgrade Termux packages:
 
 ```bash
 pkg update && pkg upgrade
 ```
 
-### 2. Install Required Packages
-Install the necessary packages like Python, pip, and unzip:
+### 2. Install Required Packages (First Time Only)
+Install Python, pip, and unzip utilities:
 
 ```bash
 pkg install python
@@ -18,12 +19,11 @@ pkg install python-pip
 pkg install unzip
 ```
 
-### 3. Download ChromeDriver
-1. **Find the ChromeDriver version** that matches your Chrome version by visiting the [ChromeDriver download page](https://sites.google.com/chromium.org/driver/).
+### 3. Download and Move ChromeDriver (First Time Only)
 
-2. **Download ChromeDriver** from your browser, and the file will likely be stored in the `/storage/emulated/0/Download/` folder on your device.
+1. **Download ChromeDriver** from the [ChromeDriver download page](https://sites.google.com/chromium.org/driver/) and place it in the Termux `Download` directory.
 
-3. **Move and Extract ChromeDriver**:
+2. **Move and Extract ChromeDriver**:
    - Navigate to the download directory:
 
      ```bash
@@ -36,59 +36,86 @@ pkg install unzip
      unzip chromedriver-linux64.zip
      ```
 
-   - Move the extracted `chromedriver` file to a directory in your PATH:
+   - Navigate into the extracted folder:
+
+     ```bash
+     cd chromedriver-linux64
+     ```
+
+   - Move the `chromedriver` file to Termux’s binary path:
 
      ```bash
      mv chromedriver /data/data/com.termux/files/usr/bin/
      ```
 
 ### 4. Clone the GitHub Repository
-Clone the D-TECH Netflix Account Tester script from GitHub:
+Clone the Netflix checker repository from GitHub:
 
 ```bash
 git clone https://github.com/Preasx24/D-TECH_Netflix_checker.git
 ```
 
-Navigate to the cloned repository:
+Navigate into the cloned repository:
 
 ```bash
 cd D-TECH_Netflix_checker
 ```
 
-### 5. Create and Edit `requirements.txt`
-In the cloned repository folder, create a `requirements.txt` file if it doesn't already exist:
+### 5. Create and Edit `requirements.txt` (First Time Only)
 
-```bash
-nano requirements.txt
-```
+1. Create the `requirements.txt` file:
 
-Add the following dependencies inside the file:
+   ```bash
+   nano requirements.txt
+   ```
 
-```
-requests
-beautifulsoup4
-colorama
-selenium
-```
+2. Add the following dependencies:
 
-Save and exit:
-- Press `CTRL + X` to exit.
-- Press `Y` to confirm saving the changes.
+   ```
+   requests
+   beautifulsoup4
+   colorama
+   selenium
+   ```
+
+3. Save and exit:
+   - Press `CTRL + X`.
+   - Press `Y` to confirm.
+   - Press `ENTER` to confirm the filename.
 
 ### 6. Install Python Packages
-Install the necessary Python packages listed in `requirements.txt`:
+Install the dependencies listed in `requirements.txt`:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 7. Run the Script
-Once everything is set up, you can run the D-TECH Netflix Account Tester:
+### 7. Add Accounts to `netflix` File
+
+1. **Open the `netflix` file for editing**:
+
+   ```bash
+   nano netflix
+   ```
+
+2. **Add the Netflix account details**:
+   Add each account detail (such as email and password) in the format expected by the script. For example:
+
+   ```
+   example1@gmail.com:password1
+   example2@gmail.com:password2
+   ```
+
+3. **Save the file**:
+   - Press `CTRL + X` to exit the editor.
+   - Press `Y` to confirm saving changes.
+   - Press `ENTER` to confirm the filename.
+
+### 8. Run the Script
+After setting up the accounts, you can run the script:
 
 ```bash
 python D-TECH_Netflix_checker.py
 ```
 
 ---
-
-This setup should ensure the correct configuration of the **D-TECH Netflix Account Tester** in Termux. Let me know if you need any further adjustments!
